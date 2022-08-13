@@ -5,40 +5,42 @@ import co.develhope.angelo.redisCache.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("")
-    public void create(@RequestBody UserJPA user){
-
+    @PostMapping()
+    public UserJPA create(@RequestBody UserJPA user){
+        return userService.create(user);
     }
 
-    @GetMapping("/")
-    public void readAll(){
-        userService.readAll();
+    @GetMapping()
+    public List<UserJPA> readAll(){
+        return userService.readAll();
     }
 
     @GetMapping("/{id}")
-    public void readOne(@PathVariable String id){
-        userService.readOne(id);
+    public UserJPA readOne(@PathVariable Long id){
+        return userService.readOne(id);
     }
 
     @GetMapping("/{id}/fast")
-    public void readOneFast(@PathVariable String id){
+    public void readOneFast(@PathVariable Long id){
         userService.readOneFast(id);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @RequestBody UserJPA user){
-        userService.update(user);
+    public UserJPA update(@PathVariable Long id, @RequestBody UserJPA user){
+        return userService.update(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id){
+    public void delete(@PathVariable Long id){
         userService.delete(id);
     }
 }

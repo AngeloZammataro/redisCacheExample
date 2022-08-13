@@ -1,28 +1,32 @@
 package co.develhope.angelo.redisCache.entities.redis;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@RedisHash(value = "user", timeToLive = 10)
-public class UserRedis {
+@RedisHash(value = "user", timeToLive = 60)
+@Data
+public class UserRedis implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String fristName;
+    private String firstName;
     private String lastName;
     private String profilePicture;
+    private String email;
+    private String passwordEncrypted;
+
+    private String domicileAddress;
+    private String domicileCity;
+    private String domicileNumber;
+    private String domicileState;
+
+    private String fiscalCode;
 }

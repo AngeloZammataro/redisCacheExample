@@ -1,18 +1,15 @@
-package co.develhope.angelo.redisCache.entities.jpa;
-
+package co.develhope.angelo.redisCache.entities;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Data
-@Entity
-@Table(name = "user")
-public class UserJPA {
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
 
     private String firstName;
     private String lastName;
@@ -26,5 +23,4 @@ public class UserJPA {
     private String domicileState;
 
     private String fiscalCode;
-
 }
