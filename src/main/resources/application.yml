@@ -18,3 +18,11 @@ redis:
   password: pHFiSNfeqNPVfFDNugWCnNF0FuQ0PgVx
   host: redis-19221.c81.us-east-1-2.ec2.cloud.redislabs.com
   port: 19221
+
+
+---
+environment: test
+redis:
+  host: localhost
+  port: 6375
+  password:
