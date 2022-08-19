@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -14,32 +15,32 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping()
+    @PostMapping("/create")
     public UserJPA create(@RequestBody UserJPA user){
         return userService.create(user);
     }
 
-    @GetMapping()
+    @GetMapping("/read-all")
     public List<UserJPA> readAll(){
         return userService.readAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("read/{id}")
     public UserJPA readOne(@PathVariable Long id){
         return userService.readOne(id);
     }
 
-    @GetMapping("/{id}/fast")
+    @GetMapping("/read/{id}/fast")
     public void readOneFast(@PathVariable Long id){
         userService.readOneFast(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public UserJPA update(@PathVariable Long id, @RequestBody UserJPA user){
         return userService.update(id, user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         userService.delete(id);
     }

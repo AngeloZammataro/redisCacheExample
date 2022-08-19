@@ -76,6 +76,3 @@ public class UserService {
     public void readOneFast(Long id) {
     }
 }
-
-
-
